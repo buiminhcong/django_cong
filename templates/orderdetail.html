@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>EShopper - Bootstrap Shop Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/order.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header Start -->
+        {% include 'header.html' %}
+    <!-- Header End -->
+
+    <div class="container">
+        <article class="card">
+            <header class="card-header"> My Orders / Tracking </header>
+            <div class="card-body">
+                <h6>Order ID: OD45345345435</h6>
+                <article class="card">
+                    <div class="card-body row">
+                        <div class="col"> <strong>Name:</strong> <br>{{ order.shipment.address.lastName }}  {{ order.shipment.address.firstName }}</div>
+                        <div class="col"> <strong>Phone:</strong> <br> <i class="fa fa-phone"></i> {{ order.shipment.address.phone }} </div>
+                        <div class="col"> <strong>Address:</strong> <br> {{ order.shipment.address.detail }} , {{ order.shipment.address.district }} , {{ order.shipment.address.city }} </div>
+                    </div>
+                </article>
+                <div class="track">
+                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order confirmed</span> </div>
+                    <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Picked by courier</span> </div>
+                    <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
+                    <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Ready for pickup</span> </div>
+                </div>
+                <hr>
+                <ul class="row">
+                    {% for item in orderBookItems %}
+                    <li class="col-md-4">
+                        <figure class="itemside mb-3">
+                            <div class="aside"><img src="{{ item.bookItem.images.0.image }}" class="img-sm border"></div>
+                            <figcaption class="info align-self-center">
+                                <p class="title">{{ item.bookItem.header }} <br> X {{ item.quantity }}</p> <span class="text-muted">{{ item.bookItem.price_book }} </span>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <hr> <a href="#" class="btn btn-primary" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to orders</a>
+            </div>
+        </article>
+    </div>
+
+    <!-- Footer Start -->
+        {% include 'footer.html' %}
+    <!-- Footer End -->
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="{% static 'mail/jqBootstrapValidation.min.js' %}"></script>
+    <script src="{% static 'mail/contact.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

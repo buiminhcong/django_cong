@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SUPERSHIP</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,300;1,400&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="login">
+
+    <div class="col-md-5" style="padding-left: 70px;">
+        <img src="assets/photo/Pola Books.png" alt="">
+    </div>
+    <div class="col-md-7">
+        <div class="content" style="width: 415px;">
+            <form method="post">
+                 {% csrf_token %}
+                <h3 class="form-title">Đăng ký</h3>
+                {% if error %}
+                    <h3>{{ error }}</h3>
+                {% endif %}
+
+                <div class="input-group form-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    <input type="text" class="form-control" name="first_name" placeholder="First name" required>
+                </div>
+
+                <div class="input-group form-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    <input type="text" class="form-control" name="last_name" placeholder="Last name" required>
+                </div>
+
+                <div class="input-group form-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    <input type="email" class="form-control" name="email" placeholder="Email" required>
+                </div>
+
+                <div class="input-group form-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    <input type="text" class="form-control" name="phone" placeholder="Phone number" required>
+                </div>
+
+                <div class="input-group form-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    <input type="text" class="form-control" name="username" placeholder="Tài Khoản" required>
+                </div>
+
+                <div class="input-group form-group">
+                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    <input type="password" class="form-control" name="password" placeholder="Mật Khẩu" required>
+                </div>
+
+                <div class="input-group form-group">
+                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    <input type="text" class="form-control" name="rePassword" placeholder="Nhập Lại Mật Khẩu" required>
+                </div>
+                <br>
+                <div class="form-actions">
+                    <a href="{% url 'user:login' %}" class="btn btn-default">Đăng Nhập</a>
+                    <button type="submit" class="btn btn-danger pull-right">Đăng Ký</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+
+</html>
