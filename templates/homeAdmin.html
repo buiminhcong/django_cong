@@ -1,0 +1,247 @@
+{% block cssblock %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Quản lí sản phẩm</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+
+    <link href="{% static 'css/homeAdmin/style.css' %}" rel="stylesheet">
+</head>
+
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex justify-content-center align-items-center header-transparent" style="background-color: black;">
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <!-- <li><a class="nav-link scrollto active" href="#hero">Home</a></li> -->
+                <li><a class="nav-link scrollto" href="#book">Sách</a></li>
+                <li><a class="nav-link scrollto" href="#clothes">Quần áo</a></li>
+                <li><a class="nav-link scrollto" href="#electronics">Đồ điện tử</a></li>
+                <li><a class="nav-link scrollto " href="#laptop">Laptop</a></li>
+                <li><a class="nav-link scrollto " href="#mobilephone">Điện thoại</a></li>
+                <li><a class="nav-link scrollto " href="#shoes">Giày</a></li>
+                <li><a class="nav-link scrollto" href="#contact">Tìm kiếm</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+        <!-- .navbar -->
+
+    </header>
+    <!-- End Header -->
+
+
+    <main id="main">
+        <section id="book" class="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Book</h2>
+                </div>
+                {% for item in listBookItem %}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="icon-box">
+                            <div class="col-12 ">
+                                <div class="row ">
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">id:</span>
+                                        <span>{{ item.id }}</span>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">title:</span>
+                                        <span>{{ item.book.title }}</span>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">language:</span>
+                                        <span>{{ item.book.language }}</span>
+                                    </div>
+
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span><a href="" style="color: blue; "><i>Sửa</i></a></span>
+                                        <span><a href="" style="color: blue; " class="ms-5"><i>Xóa</i></a></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3 d-flex justify-content-start d-flex justify-content-start">
+                                        <span style="font-weight: bold;">publicationDate:</span>
+                                        <span>{{ item.book.publicationDate }}</span>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">numberOfPages:</span>
+                                        <span>{{ item.book.numberOfPages }}</span>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">category:</span>
+                                        <span>{{ item.book.category.name }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">author:</span>
+                                        <span>{{ item.book.author.name }}</span>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">publisher:</span>
+                                        <span>{{ item.book.publisher.name }}</span>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">price:</span>
+                                        <span>{{ item.price }}</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">description:</span>
+                                        <span>{{ item.description }}</span>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">barcode:</span>
+                                        <span>{{ item.barcode }}</span>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">header:</span>
+                                        <span>{{ item.header }}</span>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">discount:</span>
+                                        <span>{{ item.discount }}</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            </div>
+        </section>
+
+
+        <section id="clothes" class="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Kid Clothes</h2>
+                </div>
+                {% for item in listKidClothesItem %}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="icon-box">
+                            <div class="col-12 ">
+                                <div class="row ">
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">id:</span>
+                                        <span>{{ item.id }}</span>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">productName:</span>
+                                        <span>{{ item.productName }}</span>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">material:</span>
+                                        <span>{{ item.material }}</span>
+                                    </div>
+
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span><a href="" style="color: blue; "><i>Sửa</i></a></span>
+                                        <span><a href="" style="color: blue; " class="ms-5"><i>Xóa</i></a></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3 d-flex justify-content-start d-flex justify-content-start">
+                                        <span style="font-weight: bold;">countryOfOrigin:</span>
+                                        <span>{{ item.countryOfOrigin }}</span>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">size:</span>
+                                        <span>{{ item.size }}</span>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">pattern:</span>
+                                        <span>{{ item.pattern}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">plusSize:</span>
+                                        <span>{{ item.plusSize }}</span>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">brand:</span>
+                                        <span>{{ item.brand }}</span>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">gender:</span>
+                                        <span>{{ item.gender }}</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">recommendedAge:</span>
+                                        <span>{{ item.recommendedAge }}</span>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">prices:</span>
+                                        <span>{{ item.prices }}</span>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">description:</span>
+                                        <span>{{ item.description }}</span>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">discount:</span>
+                                        <span>{{ item.discount }}</span>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-start">
+                                        <span style="font-weight: bold;">header:</span>
+                                        <span>{{ item.header }}</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            </div>
+        </section>
+    </main>
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+    <script src="{% static 'js/homeAdmin/main.js' %}"></script>
+
+</body>
+
+</html>
+{% endblock %}

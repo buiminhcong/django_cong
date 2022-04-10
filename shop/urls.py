@@ -18,9 +18,14 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from shop.views import HomeAPIView, HomeAdminAPIView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', HomeAPIView.as_view()),
+    path('homeAdmin/', HomeAdminAPIView.as_view()),
     path('book/', include('book.urls')),
+    path('clothes/', include('clothes.urls')),
     path('order/', include('order.urls')),
     path('user/', include('user.urls')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

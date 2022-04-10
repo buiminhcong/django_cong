@@ -31,7 +31,7 @@ class BookItemListAPIView(APIView):
 class BookItemDetailAPIView(APIView):
 
     def get(self, request, pk):
-        countImg = 0;
+        countImg = 0
         try:
             book_item = BookItem.objects.get(pk=pk)
             countImg = book_item.images.count()
@@ -56,5 +56,6 @@ class BookItemDetailAPIView(APIView):
         context = {'bookItem': bookItem, 'list': array,  'numberOfItems': cart['numberOfItems']}
 
         return render(request, 'detail.html', context)
+        # return Response(serializer.data)
 
 

@@ -1,9 +1,6 @@
 
 from django.db import models
 
-
-
-
 class Clothes(models.Model):
     productName = models.CharField(max_length=255)
     material = models.CharField(max_length=255)
@@ -59,9 +56,9 @@ class ClothesItem(models.Model):
     header = models.CharField(max_length=1023)
     discount = models.FloatField(default=0)
     clothes = models.ForeignKey(Clothes, on_delete=models.CASCADE)
-
+    # clothes = models.OneToOneField(Clothes, on_delete=models.CASCADE)
 
 class ClothesItemImage(models.Model):
-    clothesItem = models.ForeignKey(ClothesItem, on_delete=models.CASCADE)
-    image = models.CharField(max_length=1023)
+    clothesItem = models.ForeignKey(ClothesItem, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='media/images/clothes_items_images/')
     index = models.IntegerField()
