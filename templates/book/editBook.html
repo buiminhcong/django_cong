@@ -1,0 +1,155 @@
+{% block cssblock %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Quản lí sản phẩm</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+
+    <link href="{% static 'css/homeAdmin/style.css' %}" rel="stylesheet">
+</head>
+
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex justify-content-center align-bookItems-center header-transparent" style="background-color: black;">
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <!-- <li><a class="nav-link scrollto active" href="#hero">Home</a></li> -->
+                <li><a class="nav-link scrollto" href="#book">Sách</a></li>
+                <li><a class="nav-link scrollto" href="#clothes">Quần áo</a></li>
+                <li><a class="nav-link scrollto" href="#electronics">Đồ điện tử</a></li>
+                <li><a class="nav-link scrollto " href="#laptop">Laptop</a></li>
+                <li><a class="nav-link scrollto " href="#mobilephone">Điện thoại</a></li>
+                <li><a class="nav-link scrollto " href="#shoes">Giày</a></li>
+                <li><a class="nav-link scrollto" href="#contact">Tìm kiếm</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+        <!-- .navbar -->
+
+    </header>
+    <!-- End Header -->
+
+
+    <main id="main">
+        <section id="book" class="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Edit book</h2>
+                </div>
+                <form action="{% url 'book:update_book' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="">
+                                <div class="row row-cols-2">
+                                    <input name="id_book" type="text" class="form-control" value="{{ bookItem.book.id }}" hidden>
+                                    <input name="id_bookItem" type="text" class="form-control" value="{{ bookItem.id }}" hidden>
+                                    <input name="id_author" type="text" class="form-control" value="{{ bookItem.book.author.id }}" hidden>
+                                    <input name="id_category" type="text" class="form-control" value="{{ bookItem.book.category.id }}" hidden>
+                                    <input name="id_publisher" type="text" class="form-control" value="{{ bookItem.book.publisher.id }}" hidden>
+                                    <div class=" d-flex justify-content-start">
+                                        <span class="col-3" style="font-weight: bold;">title:</span>
+                                        <input name="title" type="text" class="form-control" value="{{ bookItem.book.title }}">
+                                    </div>
+                                    <div class=" d-flex justify-content-start">
+                                        <span class="col-3" style="font-weight: bold;">language:</span>
+                                        <input name="language" type="text" class="form-control" value="{{ bookItem.book.language }}">
+                                    </div>
+
+                                    <div class=" d-flex justify-content-start mt-3 ">
+                                        <span class="col-3" style="font-weight: bold;">publicationDate:</span>
+                                        <input class="form-control" type="date" name="publicationDate" value="{{ bookItem.book.publicationDate|date:'Y-m-d' }}">
+                                    </div>
+                                    <div class=" d-flex justify-content-start mt-3">
+                                        <span class="col-3" style="font-weight: bold;">numberOfPages:</span>
+                                        <input name="numberOfPages" type="text" class="form-control" value="{{ bookItem.book.numberOfPages }}">
+                                    </div>
+                                    <div class=" d-flex justify-content-start mt-3">
+                                        <span class="col-3" style="font-weight: bold;">category:</span>
+                                        <input name="name_category" type="text" class="form-control" value="{{ bookItem.book.category.name }}">
+                                    </div>
+
+                                    <div class=" d-flex justify-content-start mt-3">
+                                        <span class="col-3" style="font-weight: bold;">author:</span>
+                                        <input name="name_author" type="text" class="form-control" value="{{ bookItem.book.author.name }}">
+                                    </div>
+                                    <div class=" d-flex justify-content-start mt-3">
+                                        <span class="col-3" style="font-weight: bold;">biography:</span>
+                                        <input name="biography" type="text" class="form-control" value="{{ bookItem.book.author.biography }}">
+                                    </div>
+                                    <div class=" d-flex justify-content-start mt-3">
+                                        <span class="col-3" style="font-weight: bold;">publisher:</span>
+                                        <input name="name_publisher" type="text" class="form-control" value="{{ bookItem.book.publisher.name }}">
+                                    </div>
+                                    <div class=" d-flex justify-content-start mt-3">
+                                        <span class="col-3" style="font-weight: bold;">price:</span>
+                                        <input name="price" type="text" class="form-control" value="{{ bookItem.price }}">
+                                    </div>
+
+                                    <div class=" d-flex justify-content-start mt-3">
+                                        <span class="col-3" style="font-weight: bold;">description:</span>
+                                        <input name="description" type="text" class="form-control" value="{{ bookItem.description }}">
+                                    </div>
+                                    <div class=" d-flex justify-content-start mt-3">
+                                        <span class="col-3" style="font-weight: bold;">barcode:</span>
+                                        <input name="barcode" type="text" class="form-control" value="{{ bookItem.barcode }}">
+                                    </div>
+                                    <div class=" d-flex justify-content-start mt-3">
+                                        <span class="col-3" style="font-weight: bold;">header:</span>
+                                        <input name="header" type=" text " class="form-control " value="{{ bookItem.header }} ">
+                                    </div>
+
+
+                                    <div class=" d-flex justify-content-start mt-3 ">
+                                        <span class="col-3 " style="font-weight: bold; ">discount:</span>
+                                        <input name="discount" type="text " class="form-control " value="{{ bookItem.discount }} ">
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end mt-5 ">
+                        <button type="submit " class="btn btn-primary " style="width: 3cm; ">Save</button>
+                        <a href="http://127.0.0.1:8000/homeAdmin/ "><label class="btn btn-warning ms-5 " style="width: 3cm; ">Cancel</label></a>
+                    </div>
+
+                </form>
+                <div class=" ">
+
+                </div>
+            </div>
+
+            </div>
+        </section>
+    </main>
+
+    <a href="# " class="back-to-top d-flex align-bookItems-center justify-content-center "><i class="bi bi-arrow-up-short "></i></a>
+
+
+
+</body>
+
+</html>
+{% endblock %}

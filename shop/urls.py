@@ -17,9 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from book.views import BookItemDetailAPIView
 
 from shop.views import HomeAPIView, HomeAdminAPIView
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomeAPIView.as_view()),

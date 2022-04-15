@@ -39,7 +39,7 @@ class signupView(APIView):
                 auth.login(request, user)
                 request.session['user_id'] = user.id
                 # print("huyen" + request.session.get('user_id'))
-                response = redirect('/clothes/clothes_items/')
+                response = redirect('http://127.0.0.1:8000/')
                 return response
         else:
             return render(request, 'signup.html', {'error': 'Password does not match!'})

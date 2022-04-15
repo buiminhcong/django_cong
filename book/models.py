@@ -26,7 +26,7 @@ class BookItem(models.Model):
     barcode = models.CharField(max_length=255)
     header = models.CharField(max_length=1024)
     discount = models.FloatField(default=0)
-    book = models.OneToOneField(Book, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='book')
 
 class BookItemImage(models.Model):
     bookItem = models.ForeignKey(BookItem, on_delete=models.CASCADE, related_name='images')

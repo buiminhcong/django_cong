@@ -40,12 +40,9 @@ class FemaleShirtSerializer(serializers.ModelSerializer):
         model = FemaleShirt
         fields = ['id', 'neckline', 'croppedTop', 'topLength', 'sleeveLength']
 class FemaleClothesSerializer(serializers.ModelSerializer):
-    clothes = ClothesSerializer()
-    femalePant = FemalePantSerializer()
-    femaleShirt = FemaleShirtSerializer()
     class Meta:
         model = FemaleClothes
-        fields = ['id', 'petite', 'season', 'occasion', 'femalePant', 'femaleShirt', 'clothes']
+        fields = ['id', 'petite', 'season', 'occasion']
 
 
 class KidClothesSerializer(serializers.ModelSerializer):
@@ -61,8 +58,7 @@ class ClothesItemImageSerializer(serializers.ModelSerializer):
 
 class ClothesItemSerializer(serializers.ModelSerializer):
     clothes = ClothesSerializer()
-    # kidClothes = KidClothesSerializer()
     images = ClothesItemImageSerializer(many=True)
     class Meta:
         model = ClothesItem
-        fields = ['id', 'prices', 'description', 'header', 'discount', 'clothes', 'images']
+        fields = ['id', 'price', 'description', 'header', 'discount', 'clothes', 'images']

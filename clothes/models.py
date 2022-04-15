@@ -51,11 +51,11 @@ class Dress(MaleClothes):
 
 
 class ClothesItem(models.Model):
-    prices = models.FloatField(default=0)
+    price = models.FloatField(default=0)
     description = models.CharField(max_length=255)
     header = models.CharField(max_length=1023)
     discount = models.FloatField(default=0)
-    clothes = models.ForeignKey(Clothes, on_delete=models.CASCADE)
+    clothes = models.ForeignKey(Clothes, on_delete=models.CASCADE, related_name='clothesItems')
     # clothes = models.OneToOneField(Clothes, on_delete=models.CASCADE)
 
 class ClothesItemImage(models.Model):
