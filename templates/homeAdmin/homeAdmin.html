@@ -165,7 +165,7 @@
             <div class="container">
                 <div class="section-title row">
                     <h2 class="col-11 ">Kid Clothes</h2>
-                    <a style="height: 1cm; color: rgb(0, 0, 0); font-weight: bold;" class="col-1 btn btn-outline-warning justify-content-end" href="{% url 'book:add_book' %}" role="button">Add</a>
+                    <a style="height: 1cm; color: rgb(0, 0, 0); font-weight: bold;" class="col-1 btn btn-outline-warning justify-content-end" href="{% url 'clothes:add_kidClothes' %}" role="button">Add</a>
                 </div>
                 {% for item in listKidClothes %} {% get_infor_sell item.id as kidClothesItem%}
                 <div class="row">

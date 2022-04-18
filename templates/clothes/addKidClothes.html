@@ -53,75 +53,80 @@
         <section id="book" class="services">
             <div class="container">
                 <div class="section-title">
-                    <h2>Edit book</h2>
+                    <h2>Add Kid Clothes</h2>
                 </div>
-                <form action="{% url 'book:add_book' %}" method="post" enctype="multipart/form-data">
+                <form action="{% url 'clothes:add_kidClothes' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-12">
                             <div class="">
                                 <div class="row row-cols-2">
-                                    <input name="id_book" type="text" class="form-control" value="" hidden>
-                                    <input name="id_bookItem" type="text" class="form-control" value="" hidden>
-                                    <input name="id_author" type="text" class="form-control" value="" hidden>
-                                    <input name="id_category" type="text" class="form-control" value="" hidden>
-                                    <input name="id_publisher" type="text" class="form-control" value="" hidden>
-                                    <div class="d-flex justify-content-start">
-                                        <span class="col-3" style="font-weight: bold;">title:</span>
-                                        <input name="title" type="text" class="form-control" value="">
+                                    <input name="id_kidClothes" type="text" class="form-control" value="" hidden>
+                                    <input name="id_kidClothesItem" type="text" class="form-control" value="" hidden>
+                                    <div class=" d-flex justify-content-start">
+                                        <span class="col-3" style="font-weight: bold;">productName:</span>
+                                        <input name="productName" type="text" class="form-control" value="">
                                     </div>
                                     <div class=" d-flex justify-content-start">
-                                        <span class="col-3" style="font-weight: bold;">language:</span>
-                                        <input name="language" type="text" class="form-control" value="">
+                                        <span class="col-3" style="font-weight: bold;">material:</span>
+                                        <input name="material" type="text" class="form-control" value="">
                                     </div>
 
                                     <div class=" d-flex justify-content-start mt-3 ">
-                                        <span class="col-3" style="font-weight: bold;">publicationDate:</span>
-                                        <input class="form-control" type="date" name="publicationDate" value="">
+                                        <span class="col-3" style="font-weight: bold;">countryOfOrigin:</span>
+                                        <input class="form-control" type="text" name="countryOfOrigin" value="">
                                     </div>
                                     <div class=" d-flex justify-content-start mt-3">
-                                        <span class="col-3" style="font-weight: bold;">numberOfPages:</span>
-                                        <input name="numberOfPages" type="text" class="form-control" value="">
+                                        <span class="col-3" style="font-weight: bold;">size:</span>
+                                        <input name="size" type="text" class="form-control" value="">
                                     </div>
                                     <div class=" d-flex justify-content-start mt-3">
-                                        <span class="col-3" style="font-weight: bold;">category:</span>
-                                        <input name="name_category" type="text" class="form-control" value="">
+                                        <span class="col-3" style="font-weight: bold;">pattern:</span>
+                                        <input name="pattern" type="text" class="form-control" value="">
+                                    </div>
+                                    <div class=" d-flex justify-content-start mt-3">
+                                        <span class="col-3" style="font-weight: bold;">plusSize:</span>
+                                        <input class="form-check-input" type="checkbox" name="plusSize" value="True">
+                                    </div>
+                                    <div class=" d-flex justify-content-start mt-3">
+                                        <span class="col-3" style="font-weight: bold;">brand:</span>
+                                        <input name="brand" type="text" class="form-control" value="">
+                                    </div>
+                                    <div class=" d-flex justify-content-start mt-3">
+                                        <span class="col-3" style="font-weight: bold;">gender:</span>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="gender" value="nam" checked>
+                                            <label class="form-check-label">
+                                              Male
+                                            </label>
+                                        </div>
+                                        <div class="form-check ms-5">
+                                            <input class="form-check-input" type="radio" name="gender" value="nữ">
+                                            <label class="form-check-label">
+                                              Female
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class=" d-flex justify-content-start mt-3">
+                                        <span class="col-3" style="font-weight: bold;">recommendedAge:</span>
+                                        <input name="recommendedAge" type="text" class="form-control" value="">
                                     </div>
 
-                                    <div class=" d-flex justify-content-start mt-3">
-                                        <span class="col-3" style="font-weight: bold;">author:</span>
-                                        <input name="name_author" type="text" class="form-control" value="">
-                                    </div>
-                                    <div class=" d-flex justify-content-start mt-3">
-                                        <span class="col-3" style="font-weight: bold;">biography:</span>
-                                        <input name="biography" type="text" class="form-control" value="">
-                                    </div>
-                                    <div class=" d-flex justify-content-start mt-3">
-                                        <span class="col-3" style="font-weight: bold;">publisher:</span>
-                                        <input name="name_publisher" type="text" class="form-control" value="">
-                                    </div>
                                     <div class=" d-flex justify-content-start mt-3">
                                         <span class="col-3" style="font-weight: bold;">price:</span>
                                         <input name="price" type="text" class="form-control" value="">
                                     </div>
-
                                     <div class=" d-flex justify-content-start mt-3">
                                         <span class="col-3" style="font-weight: bold;">description:</span>
                                         <input name="description" type="text" class="form-control" value="">
                                     </div>
                                     <div class=" d-flex justify-content-start mt-3">
-                                        <span class="col-3" style="font-weight: bold;">barcode:</span>
-                                        <input name="barcode" type="text" class="form-control" value="">
-                                    </div>
-                                    <div class=" d-flex justify-content-start mt-3">
                                         <span class="col-3" style="font-weight: bold;">header:</span>
                                         <input name="header" type=" text " class="form-control " value="">
                                     </div>
-
-
-                                    <div class=" d-flex justify-content-start mt-3 ">
-                                        <span class="col-3 " style="font-weight: bold; ">discount:</span>
-                                        <input name="discount" type="text " class="form-control " value="">
+                                    <div class=" d-flex justify-content-start mt-3">
+                                        <span class="col-3" style="font-weight: bold;">discount:</span>
+                                        <input name="discount" type=" text " class="form-control " value="">
                                     </div>
 
 
@@ -132,7 +137,7 @@
                     </div>
                     <div class="d-flex justify-content-end mt-5 ">
                         <button type="submit " class="btn btn-primary " style="width: 3cm; ">Save</button>
-                        <a href="http://127.0.0.1:8000/homeAdmin/ "><label class="btn btn-warning ms-5 " style="width: 3cm; ">Cancel</label></a>
+                        <a href="http://127.0.0.1:8000/homeAdmin/#kidClothes"><label class="btn btn-warning ms-5 " style="width: 3cm; ">Cancel</label></a>
                     </div>
 
                 </form>
@@ -147,9 +152,9 @@
 
     <a href="# " class="back-to-top d-flex align-bookItems-center justify-content-center "><i class="bi bi-arrow-up-short "></i></a>
 
-
-
 </body>
 
 </html>
+
+
 {% endblock %}

@@ -53,75 +53,84 @@
         <section id="book" class="services">
             <div class="container">
                 <div class="section-title">
-                    <h2>Edit book</h2>
+                    <h2>Edit Kid Clothes</h2>
                 </div>
-                <form action="{% url 'book:update_book' %}" method="post" enctype="multipart/form-data">
+                <form action="{% url 'clothes:update_kidClothes' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-12">
                             <div class="">
                                 <div class="row row-cols-2">
-                                    <input name="id_book" type="text" class="form-control" value="{{ bookItem.book.id }}" hidden>
-                                    <input name="id_bookItem" type="text" class="form-control" value="{{ bookItem.id }}" hidden>
-                                    <input name="id_author" type="text" class="form-control" value="{{ bookItem.book.author.id }}" hidden>
-                                    <input name="id_category" type="text" class="form-control" value="{{ bookItem.book.category.id }}" hidden>
-                                    <input name="id_publisher" type="text" class="form-control" value="{{ bookItem.book.publisher.id }}" hidden>
+                                    <input name="id_kidClothes" type="text" class="form-control" value="{{ kidClothes.id }}" hidden>
+                                    <input name="id_kidClothesItem" type="text" class="form-control" value="{{ kidClothesItem.id }}" hidden>
                                     <div class=" d-flex justify-content-start">
-                                        <span class="col-3" style="font-weight: bold;">title:</span>
-                                        <input name="title" type="text" class="form-control" value="{{ bookItem.book.title }}">
+                                        <span class="col-3" style="font-weight: bold;">productName:</span>
+                                        <input name="productName" type="text" class="form-control" value="{{ kidClothes.productName }}">
                                     </div>
                                     <div class=" d-flex justify-content-start">
-                                        <span class="col-3" style="font-weight: bold;">language:</span>
-                                        <input name="language" type="text" class="form-control" value="{{ bookItem.book.language }}">
+                                        <span class="col-3" style="font-weight: bold;">material:</span>
+                                        <input name="material" type="text" class="form-control" value="{{ kidClothes.material }}">
                                     </div>
 
                                     <div class=" d-flex justify-content-start mt-3 ">
-                                        <span class="col-3" style="font-weight: bold;">publicationDate:</span>
-                                        <input class="form-control" type="date" name="publicationDate" value="{{ bookItem.book.publicationDate|date:'Y-m-d' }}">
+                                        <span class="col-3" style="font-weight: bold;">countryOfOrigin:</span>
+                                        <input class="form-control" type="text" name="countryOfOrigin" value="{{ kidClothes.countryOfOrigin}}">
                                     </div>
                                     <div class=" d-flex justify-content-start mt-3">
-                                        <span class="col-3" style="font-weight: bold;">numberOfPages:</span>
-                                        <input name="numberOfPages" type="text" class="form-control" value="{{ bookItem.book.numberOfPages }}">
+                                        <span class="col-3" style="font-weight: bold;">size:</span>
+                                        <input name="size" type="text" class="form-control" value="{{ kidClothes.size }}">
                                     </div>
                                     <div class=" d-flex justify-content-start mt-3">
-                                        <span class="col-3" style="font-weight: bold;">category:</span>
-                                        <input name="name_category" type="text" class="form-control" value="{{ bookItem.book.category.name }}">
+                                        <span class="col-3" style="font-weight: bold;">pattern:</span>
+                                        <input name="pattern" type="text" class="form-control" value="{{ kidClothes.pattern }}">
                                     </div>
 
                                     <div class=" d-flex justify-content-start mt-3">
-                                        <span class="col-3" style="font-weight: bold;">author:</span>
-                                        <input name="name_author" type="text" class="form-control" value="{{ bookItem.book.author.name }}">
+                                        <span class="col-3" style="font-weight: bold;">plusSize:</span> {% if kidClothes.plusSize %}
+                                        <input class="form-check-input" type="checkbox" name="plusSize" value="True" checked> {% else %}
+                                        <input class="form-check-input" type="checkbox" name="plusSize" value="False">{% endif %}
                                     </div>
                                     <div class=" d-flex justify-content-start mt-3">
-                                        <span class="col-3" style="font-weight: bold;">biography:</span>
-                                        <input name="biography" type="text" class="form-control" value="{{ bookItem.book.author.biography }}">
+                                        <span class="col-3" style="font-weight: bold;">brand:</span>
+                                        <input name="brand" type="text" class="form-control" value="{{ kidClothes.brand }}">
                                     </div>
                                     <div class=" d-flex justify-content-start mt-3">
-                                        <span class="col-3" style="font-weight: bold;">publisher:</span>
-                                        <input name="name_publisher" type="text" class="form-control" value="{{ bookItem.book.publisher.name }}">
+                                        <span class="col-3" style="font-weight: bold;">gender:</span> {% if kidClothes.gender %}
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="gender" value="nam" checked>
+                                            <label class="form-check-label">
+                                              Male
+                                            </label>
+                                        </div>
+                                        {% else %}
+                                        <div class="form-check ms-5">
+                                            <input class="form-check-input" type="radio" name="gender" value="nữ">
+                                            <label class="form-check-label">
+                                              Female
+                                            </label>
+                                        </div>
+                                        {% endif %}
                                     </div>
+                                    <div class=" d-flex justify-content-start mt-3">
+                                        <span class="col-3" style="font-weight: bold;">recommendedAge:</span>
+                                        <input name="recommendedAge" type="text" class="form-control" value="{{ kidClothes.recommendedAge }}">
+                                    </div>
+
                                     <div class=" d-flex justify-content-start mt-3">
                                         <span class="col-3" style="font-weight: bold;">price:</span>
-                                        <input name="price" type="text" class="form-control" value="{{ bookItem.price }}">
+                                        <input name="price" type="text" class="form-control" value="{{ kidClothesItem.price }}">
                                     </div>
-
                                     <div class=" d-flex justify-content-start mt-3">
                                         <span class="col-3" style="font-weight: bold;">description:</span>
-                                        <input name="description" type="text" class="form-control" value="{{ bookItem.description }}">
-                                    </div>
-                                    <div class=" d-flex justify-content-start mt-3">
-                                        <span class="col-3" style="font-weight: bold;">barcode:</span>
-                                        <input name="barcode" type="text" class="form-control" value="{{ bookItem.barcode }}">
+                                        <input name="description" type="text" class="form-control" value="{{ kidClothesItem.description }}">
                                     </div>
                                     <div class=" d-flex justify-content-start mt-3">
                                         <span class="col-3" style="font-weight: bold;">header:</span>
-                                        <input name="header" type=" text " class="form-control " value="{{ bookItem.header }} ">
+                                        <input name="header" type=" text " class="form-control " value="{{ kidClothesItem.header }} ">
                                     </div>
-
-
-                                    <div class=" d-flex justify-content-start mt-3 ">
-                                        <span class="col-3 " style="font-weight: bold; ">discount:</span>
-                                        <input name="discount" type="text " class="form-control " value="{{ bookItem.discount }} ">
+                                    <div class=" d-flex justify-content-start mt-3">
+                                        <span class="col-3" style="font-weight: bold;">discount:</span>
+                                        <input name="discount" type=" text " class="form-control " value="{{ kidClothesItem.discount }} ">
                                     </div>
 
 
