@@ -1,3 +1,4 @@
+from tkinter import Image
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.test import RequestFactory
@@ -34,7 +35,7 @@ class BookItemListAPIView(APIView):
         cart = CartSerializer(cart).data
         context = {'listBookItem': listBookItem,
                    'numberOfItems': cart['numberOfItems']}
-        return render(request, 'index.html', context)
+        return render(request, 'book/bookItems.html', context)
 
 
 class BookItemDetailAPIView(APIView):
@@ -69,8 +70,8 @@ class BookItemDetailAPIView(APIView):
         context = {'bookItem': bookItem, 'list': array,
                    'numberOfItems': cart['numberOfItems']}
 
-        # return render(request, 'detail.html', context)
-        return Response(serializer.data)
+        return render(request, 'detail.html', context)
+        # return Response(serializer.data)
 
 
 @api_view(['GET', 'DELETE'])
@@ -85,7 +86,8 @@ def tutorial_list(request, pk):
 class EditBookItem(View):
     def get(self, request, pk):
         bookItem = BookItem.objects.get(id=pk)
-        return render(request, 'book/editBook.html', {'bookItem': bookItem})
+        bookItemImage = BookItemImage.objects.filter(bookItem = bookItem)
+        return render(request, 'book/editBook.html', {'bookItem': bookItem, 'bookItemImage': bookItemImage})
 
     def post(self, request):
         id_bookItem = request.POST['id_bookItem']
@@ -121,6 +123,13 @@ class EditBookItem(View):
         book.numberOfPages = request.POST['numberOfPages']
         book.save()
 
+        try:
+            for image in request.FILES.getlist('img'):
+                img = BookItemImage.objects.create(bookItem = bookItem, image = image)
+                img.save()
+        except:
+            pass
+
         return redirect('http://127.0.0.1:8000/homeAdmin')
 class CreateBookItem(View):
     def get(self, request):
@@ -155,12 +164,14 @@ class CreateBookItem(View):
         bookItem = BookItem.objects.create(price=price, description=description, barcode=barcode, header=header, discount=discount, book=book)
         bookItem.save()
 
+        for image in request.FILES.getlist('img'):
+            img = BookItemImage.objects.create(bookItem = bookItem, image = image)
+            img.save()
+
         return redirect('http://127.0.0.1:8000/homeAdmin')
 def delete(request, pk):
     bookItem = BookItem.objects.get(id=pk)
     book = Book.objects.get(id=bookItem.book.id)
-    bookItemImages = BookItemImage.objects.filter(bookItem=bookItem).values_list('id', flat=True)
     book.delete()
     bookItem.delete()
-    bookItemImages.delete()
     return redirect('http://127.0.0.1:8000/homeAdmin')

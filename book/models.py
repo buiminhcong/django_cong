@@ -31,4 +31,3 @@ class BookItem(models.Model):
 class BookItemImage(models.Model):
     bookItem = models.ForeignKey(BookItem, on_delete=models.CASCADE, related_name='images')
     image = models.ImageField(upload_to='media/images/book_items_images/')
-    index = models.IntegerField()

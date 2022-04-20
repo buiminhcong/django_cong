@@ -18,11 +18,11 @@ from django.shortcuts import render
 class HomeAPIView(APIView):
 
     def get(self, request):
-        clothes_items = ClothesItem.objects.all()
+        clothes_items = ClothesItem.objects.all().order_by('-id')[:4]
         serializerClothes = ClothesItemSerializer(clothes_items, many=True) # chuyen ve dang json
         listClothesItem = serializerClothes.data # 1 list Clothes item
 
-        book_items = BookItem.objects.all()
+        book_items = BookItem.objects.all().order_by('-id')[:4]
         serializerBook = BookItemSerializer(book_items, many=True)
         listBookItem = serializerBook.data
 
@@ -40,7 +40,6 @@ class HomeAPIView(APIView):
 class HomeAdminAPIView(APIView):
     def get(self, request):
         clothes_items = ClothesItem.objects.all()
-
         serializerClothes = ClothesItemSerializer(clothes_items, many=True) # chuyen ve dang json
         listClothesItem = serializerClothes.data # 1 list Clothes item
 

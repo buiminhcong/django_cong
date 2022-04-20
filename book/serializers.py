@@ -32,7 +32,7 @@ class BookSerializer(WritableNestedModelSerializer, serializers.ModelSerializer)
 class BookItemImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = BookItemImage
-        fields = ['id', 'image', 'index']
+        fields = ['id', 'image']
 
 class BookItemSerializer(serializers.ModelSerializer):
     images = BookItemImageSerializer(many=True)
